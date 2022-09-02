@@ -5,17 +5,24 @@ public class Main {
 
     private static final Scanner scanner = new Scanner(System.in);
 
+
     public static void main(String[] args) {
 
-        System.out.println("Booting up Calculator 3000 ...");
-        System.out.println("Finished booting up Calculator 3000");
 
         boolean inuse = true;
-        while(inuse){
-            int choice = selectInput();
-            switch (choice){
+        while (inuse) {
+            System.out.println("Welcome to Calculator 3000!");
+            System.out.println("Do you want to:\n(1) Add\n(2) Subtract");
+            System.out.println("(3) Multiply\n(4) Divide\n(5) Square root\n(6) Exit");
+
+            inputChecker();
+            int input = scanner.nextInt();
+
+            int choice = input;
+            switch (choice) {
                 case 4:
                     handleDivision();
+                    break;
                 case 6:
                     inuse = false;
                     System.out.println("You've selected to quit the calculator. Goodbye!");
@@ -25,38 +32,38 @@ public class Main {
 
     }
 
-    public static int selectInput() throws InvalidAnswerException {
-        List<Integer> acceptableAnswers = List.of(1, 2, 4, 5, 6);
-        System.out.println("Type the corresponding number to select your desired operation: ");
-        System.out.println("1. Addition");
-        System.out.println("2. Subtraction");
-        System.out.println("3. Multiplication");
-        System.out.println("4. Division");
-        System.out.println("5. Square root");
-        System.out.println("6. Exit program");
-        System.out.println("Your choice: ");
-        int choice = scanner.nextInt();
-        if(!acceptableAnswers.contains(choice)) {
-            throw new InvalidAnswerException("Not a valid answer");
-        } else {
-            return choice;
-        }
-    }
 
-    public static void handleAddition(){
+    public static void handleAddition() {
 
     }
 
-    public static void handleDivision(){
+
+    public static void handleDivision() {
         System.out.println("You've opted for division");
         System.out.println("Enter your numerator: ");
+        inputChecker();
         int numerator = scanner.nextInt();
         System.out.println("Enter your denominator: ");
+        inputChecker();
         int denominator = scanner.nextInt();
         double quotient = Operations.divide(numerator, denominator);
         System.out.println("The result of " + numerator + " divided by " + denominator + " is " + quotient);
+        pressEnterToContinue();
     }
 
+
+    private static void pressEnterToContinue() {
+        System.out.println("Press Enter key to continue");
+        try {
+            System.in.read();
+            scanner.nextLine();
+        } catch (Exception e) {
+        }
+    }
+    private static void inputChecker(){
+        while (!scanner.hasNextInt()) {
+            System.out.println("Please write a number");
+            scanner.next();
+        }
+    }
 }
-
-
