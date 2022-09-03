@@ -5,7 +5,7 @@ public class Operations {
         return numerator / denominator;
     }
 
-    
+
 
     public static double add(Double term1, Double term2)
     {

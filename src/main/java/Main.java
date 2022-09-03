@@ -17,7 +17,9 @@ public class Main {
 
             inputChecker();
 
-            int choice = scanner.nextInt();
+            double input = scanner.nextDouble();
+            int choice = (int) input;
+
             switch (choice)
             {
                 case 1:
@@ -128,7 +130,8 @@ public class Main {
             System.in.read();
             scanner.nextLine();
         }
-        catch (Exception e) {}
+        catch (Exception e)
+        {}
     }
 
     private static void inputChecker(){
