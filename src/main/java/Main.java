@@ -1,24 +1,27 @@
 
+
 import java.util.Scanner;
 
 public class Main {
 
     private static final Scanner scanner = new Scanner(System.in);
 
+    public static void main(String[] args) {
+        switchmethod();
+    }
 
-    public static void main(String[] args)
-    {
+
+    public static void switchmethod(){
         boolean inuse = true;
         while (inuse)
         {
             System.out.println("Welcome to Calculator 3000!");
             System.out.println("Do you want to:\n(1) Add\n(2) Subtract");
             System.out.println("(3) Multiply\n(4) Divide\n(5) Square root\n(6) Exit");
-
             inputChecker();
-
             double input = scanner.nextDouble();
             int choice = (int) input;
+
 
             switch (choice)
             {
@@ -53,8 +56,9 @@ public class Main {
                     break;
             }
         }
-
     }
+
+
 
 
     public static void handleAddition()
@@ -122,6 +126,8 @@ public class Main {
         System.out.println("The result of " + radicand + " squared " + " is " + result);
         pressEnterToContinue();
     }
+
+
     private static void pressEnterToContinue()
     {
         System.out.println("Press Enter to continue");
@@ -134,10 +140,10 @@ public class Main {
         {}
     }
 
-    private static void inputChecker(){
+        public static void inputChecker(){
         while (!scanner.hasNextDouble()) {
-            System.out.println("Please write a number");
-            scanner.next();
+        System.out.println("Please write a number");
+           scanner.next();
         }
     }
 }
